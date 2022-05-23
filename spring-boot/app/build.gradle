@@ -5,14 +5,23 @@ plugins {
 }
 
 group = 'io.github.gotooooo'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
 sourceCompatibility = '17'
 
 repositories {
   mavenCentral()
+
+  maven {
+    url 'codeartifact-repository-endpoint'
+    credentials {
+      username "aws"
+      password System.env.CODEARTIFACT_AUTH_TOKEN
+    }
+  }
 }
 
 dependencies {
+  implementation 'io.github.gotooooo:lib:1.0.0'
   implementation 'org.springframework.boot:spring-boot-starter'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
